@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { Chakra_Petch } from "next/font/google";
 import { useKeenSlider } from "keen-slider/react";
 import "keen-slider/keen-slider.min.css";
+import Button from "../button/Button";
 
 const chakra_petch = Chakra_Petch({ subsets: ["latin"], weight: ["600"] });
 
@@ -60,6 +61,10 @@ export default function Hero() {
               web app. Simplify reservations, optimize space utilization, and
               enhance customer satisfaction.{" "}
             </p>
+            <div className="flex gap-5">
+              <Button title={"Available Parking Slots"} bgcolor={"black"} color={"#F0FFFF"} padL={10} padT={5}/>
+              <Button title={"Learn More"} bgcolor={"black"} color={"#F0FFFF"} padL={10} padT={5}/>
+            </div>
           </div>
           <div ref={sliderRef} className="keen-slider">
             <div className="keen-slider__slide number-slide1"><img src="./images/hero-img.png" alt="" /></div>

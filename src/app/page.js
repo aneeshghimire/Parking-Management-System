@@ -4,7 +4,6 @@ import Hero from "./components/hero/Hero";
 import { Poppins } from "next/font/google";
 import Layout from "./components/layout/Layout";
 import Feature from "./components/feature/Feature";
-import { Chakra_Petch } from "next/font/google";
 
 const poppins= Poppins({ subsets: ["latin"], weight:["400","500","600","700","800"] });
 

@@ -1,15 +1,16 @@
-import React from 'react'
+import React from "react";
 
-export default function Featurecard({icon,text}) {
+export default function Featurecard({ icon, text, bRight, bLeft }) {
+  const style = {
+    borderRight: bRight,
+    borderLeft: bLeft,
+  };
   return (
-    <div>
-        <div className="container border-r border-r-black px-5">
-            <div className="content flex flex-col items-center gap-y-5">
-            {icon}
-            <p className=' text-center'>{text}</p>
-            </div>
-        </div>
+    <div style={style} className="px-5">
+      <div className="content flex flex-col items-center gap-y-5">
+        {icon}
+        <p className="text-center tracking-wider w-4/5">{text}</p>
+      </div>
     </div>
-    
-  )
+  );
 }

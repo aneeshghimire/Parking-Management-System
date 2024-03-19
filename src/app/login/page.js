@@ -5,48 +5,50 @@ import { useState } from "react";
 import Button from "../components/button/Button";
 import { useKeenSlider } from "keen-slider/react";
 import "keen-slider/keen-slider.min.css";
+import Link from 'next/link'
+
 
 export default function Login() {
-    const [sliderRef] = useKeenSlider(
-        {
-          loop: true,
-        },
-        [
-          (slider) => {
-            let timeout;
-            let mouseOver = false;
-            function clearNextTimeout() {
-              clearTimeout(timeout);
-            }
-            function nextTimeout() {
-              clearTimeout(timeout);
-              if (mouseOver) return;
-              timeout = setTimeout(() => {
-                slider.next();
-              }, 2000);
-            }
-            slider.on("created", () => {
-              slider.container.addEventListener("mouseover", () => {
-                mouseOver = true;
-                clearNextTimeout();
-              });
-              slider.container.addEventListener("mouseout", () => {
-                mouseOver = false;
-                nextTimeout();
-              });
-              nextTimeout();
-            });
-            slider.on("dragStarted", clearNextTimeout);
-            slider.on("animationEnded", nextTimeout);
-            slider.on("updated", nextTimeout);
-          },
-        ]
-      );
+  const [sliderRef] = useKeenSlider(
+    {
+      loop: true,
+    },
+    [
+      (slider) => {
+        let timeout;
+        let mouseOver = false;
+        function clearNextTimeout() {
+          clearTimeout(timeout);
+        }
+        function nextTimeout() {
+          clearTimeout(timeout);
+          if (mouseOver) return;
+          timeout = setTimeout(() => {
+            slider.next();
+          }, 2000);
+        }
+        slider.on("created", () => {
+          slider.container.addEventListener("mouseover", () => {
+            mouseOver = true;
+            clearNextTimeout();
+          });
+          slider.container.addEventListener("mouseout", () => {
+            mouseOver = false;
+            nextTimeout();
+          });
+          nextTimeout();
+        });
+        slider.on("dragStarted", clearNextTimeout);
+        slider.on("animationEnded", nextTimeout);
+        slider.on("updated", nextTimeout);
+      },
+    ]
+  );
   const [user, setUser] = useState({
     email: "",
     password: "",
   });
-  const onLogin = async () => {};
+  const onLogin = async () => { };
   return (
     <Layout>
       <div className="container mx-auto p-10 flex justify-between items-center">
@@ -54,7 +56,7 @@ export default function Login() {
           <div className="keen-slider__slide number-slide1">
             <img src="./images/login-images/login-img-1.png" alt="" />
           </div>
-          
+
         </div>
 
         <div className="login-inputs flex flex-col items-center gap-y-8 bg-gray-50 w-2/3 px-2 py-5">
@@ -89,7 +91,7 @@ export default function Login() {
                 className=" outline-none border border-gray-400 border-opacity-30 px-5 py-2  placeholder:text-gray-500"
               />
             </div>
-            <div className="btn">
+            <div className="btn  flex flex-row gap-x-5">
               <Button
                 title={"Login"}
                 bgcolor={"#1F51FF"}
@@ -97,6 +99,15 @@ export default function Login() {
                 padT={3}
                 color={"white"}
               />
+              <Link href={"./register"}>
+                <Button
+                  title={"Register"}
+                  bgcolor={"#1F51FF"}
+                  padL={10}
+                  padT={3}
+                  color={"white"}
+                />
+              </Link>
             </div>
           </div>
         </div>

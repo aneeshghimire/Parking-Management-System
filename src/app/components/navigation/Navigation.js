@@ -6,14 +6,14 @@ import Button from "../button/Button";
 export default function Navigation() {
   
   return (
-    <div>
+    <div data-testid="navigation-bar">
       <div className="navigation-bar py-2 bg-gray-950 text-white ">
         <div className="container mx-auto flex justify-between items-center">
           <div className="logo">
                <Link href={'/'}> <img src="./images/logo-img.png" alt="EasyWayPark" /></Link> 
           </div>
         <div className="nav-items flex gap-8 text-sm uppercase ">
-            <Link href={""} className="hover:scale-105 transition-all">Your Dashboard</Link>
+            <Link href={"/"} className="hover:scale-105 transition-all">Home</Link>
             <Link href={""} className="hover:scale-105 transition-all">About Us</Link>
             <Link href={""} className="hover:scale-105 transition-all">Contact</Link>
           </div>

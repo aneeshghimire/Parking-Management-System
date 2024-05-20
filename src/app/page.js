@@ -12,8 +12,8 @@ export default function Home() {
   return (
    <div className={poppins.className}>
     <Layout>
-        <Hero/>
-        <Feature/>
+        <Hero id={"hero-component"}/>
+        <Feature id={"feature-component"}/>
     </Layout>
    </div>
   );

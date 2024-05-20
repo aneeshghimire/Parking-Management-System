@@ -7,7 +7,7 @@ import Button from "../button/Button";
 
 const chakra_petch = Chakra_Petch({ subsets: ["latin"], weight: ["600"] });
 
-export default function Hero() {
+export default function Hero({id}) {
   const [sliderRef] = useKeenSlider(
     {
       loop: true,
@@ -45,7 +45,7 @@ export default function Hero() {
   );
 
   return (
-    <div>
+    <div id={id}>
       <div className=" w-full h-9v relative">
         <div className="px-5 flex items-center justify-between">
           <div className="text-black flex flex-col gap-y-10 px-5">

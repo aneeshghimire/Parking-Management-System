@@ -5,6 +5,7 @@ import { useState } from "react";
 import Button from "../components/button/Button";
 import { useKeenSlider } from "keen-slider/react";
 import "keen-slider/keen-slider.min.css";
+import Link from "next/link";
 
 export default function Login() {
     const [sliderRef] = useKeenSlider(
@@ -89,7 +90,7 @@ export default function Login() {
                 className=" outline-none border border-gray-400 border-opacity-30 px-5 py-2  placeholder:text-gray-500"
               />
             </div>
-            <div className="btn">
+            <div className="btn flex gap-x-3">
               <Button
                 title={"Login"}
                 bgcolor={"#1F51FF"}
@@ -97,6 +98,14 @@ export default function Login() {
                 padT={3}
                 color={"white"}
               />
+              <Link href={"/register"}> <Button
+                title={"Register"}
+                bgcolor={"#1F51FF"}
+                padL={10}
+                padT={3}
+                color={"white"}
+              /></Link>
+             
             </div>
           </div>
         </div>

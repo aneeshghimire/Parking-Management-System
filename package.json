@@ -13,6 +13,7 @@
     "bcryptjs": "^2.4.3",
     "chromedriver": "^124.0.1",
     "embla-carousel-react": "^8.0.0",
+    "jsonwebtoken": "^9.0.2",
     "keen-slider": "^6.8.6",
     "mongoose": "^8.3.2",
     "next": "^14.1.0",

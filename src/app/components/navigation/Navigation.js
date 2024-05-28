@@ -8,7 +8,7 @@ export default function Navigation() {
   return (
     <div data-testid="navigation-bar">
       <div className="navigation-bar py-2 bg-gray-950 text-white ">
-        <div className="container mx-auto flex justify-between items-center">
+        <div className=" container w-5/6 mx-auto flex justify-between items-center">
           <div className="logo">
             <Link href={'/'}> <img src="./images/logo-img.png" alt="EasyWayPark" /></Link>
           </div>

@@ -11,7 +11,7 @@ import { FaRegCopyright } from "react-icons/fa";
 export default function Footer() {
   return (
     <div className=" bg-gray-950">
-      <div className="container border-b border-b-gray-700 mx-auto px-10 py-10 flex gap-10 flex-wrap">
+      <div className="container w-5/6 border-b border-b-gray-700 mx-auto px-10 py-10 flex gap-10 flex-wrap">
         <div className="footer-logo w-2/5 text-sm flex flex-col gap-y-5">
           <img src="./images/logo-img.png" width={100} alt="" />
           <p className="text-white">

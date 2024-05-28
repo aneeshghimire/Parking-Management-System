@@ -5,8 +5,11 @@ import { useState } from "react";
 import Button from "../components/button/Button";
 import { useKeenSlider } from "keen-slider/react";
 import "keen-slider/keen-slider.min.css";
+import { useRouter } from "next/navigation";
+import axios from "axios";
 
-export default function Login() {
+export default function Register() {
+    const router = useRouter();
     const [sliderRef] = useKeenSlider(
         {
             loop: true,
@@ -43,12 +46,21 @@ export default function Login() {
         ]
     );
     const [user, setUser] = useState({
-        firstname: "",
-        lastname: "",
+        firstName: "",
+        lastName: "",
         email: "",
         password: "",
     });
-    const onLogin = async () => { };
+    const onRegister = async () => { 
+       
+        try{
+            const response = await axios.post("/api/register", user);
+            router.push("/login");
+        }
+        catch(error){
+            console.log(error.message)
+        }
+    }
     return (
         <Layout>
             <div className="container mx-auto p-10 flex justify-between items-center">
@@ -77,8 +89,8 @@ export default function Login() {
                                         id="first-name"
                                         type="text"
                                         placeholder="Enter your First Name"
-                                        value={user.firstname}
-                                        onChange={(e) => setUser({ ...user, firstname: e.target.value })}
+                                        value={user.firstName}
+                                        onChange={(e) => setUser({ ...user, firstName: e.target.value })}
                                         className=" outline-none border placeholder:text-gray-500 border-gray-400 border-opacity-30 px-5 py-2"
                                     />
                                 </div>
@@ -91,8 +103,8 @@ export default function Login() {
                                         id="last-name"
                                         type="text"
                                         placeholder="Enter your Last Name"
-                                        value={user.lastname}
-                                        onChange={(e) => setUser({ ...user, lastname: e.target.value })}
+                                        value={user.lastName}
+                                        onChange={(e) => setUser({ ...user, lastName: e.target.value })}
                                         className=" outline-none border placeholder:text-gray-500 border-gray-400 border-opacity-30 px-5 py-2"
                                     />
                                 </div>
@@ -136,6 +148,7 @@ export default function Login() {
                                     padL={10}
                                     padT={3}
                                     color={"white"}
+                                    event={onRegister}
                                 />
                             </div>
                         </div>

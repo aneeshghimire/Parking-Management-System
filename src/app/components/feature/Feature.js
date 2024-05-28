@@ -10,7 +10,7 @@ const chakra_petch = Chakra_Petch({ subsets: ["latin"], weight: ["600"] });
 export default function Feature({id}) {
   return (
     <div id={id}>
-      <div className="container mx-auto flex flex-col gap-y-10 py-10">
+      <div className="container w-5/6 mx-auto flex flex-col gap-y-10 py-10">
         <h2 className="font-semibold text-2xl text-center">OUR FEATURES</h2>
         <div className="mx-auto flex justify-center gap-y-10 flex-wrap">
           <Featurecard

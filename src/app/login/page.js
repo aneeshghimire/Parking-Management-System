@@ -1,13 +1,17 @@
 "use client";
-import React from "react";
+import React, { useContext } from "react";
 import Layout from "../components/layout/Layout";
 import { useState } from "react";
 import Button from "../components/button/Button";
 import { useKeenSlider } from "keen-slider/react";
+import { useRouter } from "next/navigation";
+import axios from "axios";
 import "keen-slider/keen-slider.min.css";
 import Link from "next/link";
+import Logincontext from "../context/logincontext/LoginContext";
 
 export default function Login() {
+  const router= useRouter();
   const [sliderRef] = useKeenSlider(
     {
       loop: true,
@@ -47,7 +51,18 @@ export default function Login() {
     email: "",
     password: "",
   });
-  const onLogin = async () => { };
+  const {isLoggedIn,setIsLoggedIn}= useContext(Logincontext)
+  const onLogin = async () => { 
+    try{
+      const response= await axios.post("/api/login",user)
+      setIsLoggedIn(true)
+      router.push("/")
+
+    }
+    catch(error){
+        console.log(error.message)
+    }
+  };
   return (
     <Layout>
       <div className="container mx-auto p-10 flex justify-between items-center">
@@ -97,6 +112,7 @@ export default function Login() {
                 padL={10}
                 padT={3}
                 color={"white"}
+                event={onLogin}
               />
               <Link href={"/register"}> <Button
                 title={"Register"}

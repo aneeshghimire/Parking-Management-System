@@ -23,10 +23,10 @@ try{
     //create token data
     const tokenData={
         id: user._id,
-        username: user.username,
         email: user.email
     }
     const token =await jwt.sign(tokenData,process.env.TOKEN_SECRET, {expiresIn:"1d"})
+    console.log(token)
     const response = NextResponse.json({
         message:"Login Successful"
     })

@@ -10,7 +10,7 @@ export default function AddParkingSpot() {
     const router= useRouter()
 
     const [parkingArea, setArea] = useState({
-        areaName: "",
+        name: "",
         location: "",
         capacity: "",
     });
@@ -36,11 +36,11 @@ export default function AddParkingSpot() {
                             Parking Area Name
                         </label>
                         <input
-                            id="area"
+                            id="name"
                             type="text"
                             placeholder="Enter parking area name"
-                            value={parkingArea.areaName}
-                            onChange={(e) => setArea({ ...parkingArea, areaName: e.target.value })}
+                            value={parkingArea.name}
+                            onChange={(e) => setArea({ ...parkingArea, name: e.target.value })}
                             className=" outline-none border placeholder:text-gray-500 border-gray-400 border-opacity-30 px-5 py-2"
                         />
                     </div>

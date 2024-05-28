@@ -1,5 +1,5 @@
 import { connect } from "../../../dbconfig/dbConfig"
-import ParkingArea from "../../../models/parkingAreas"
+import ParkingArea from "../../../models/parkingAreaModel"
 import { NextRequest, NextResponse } from "next/server"
 import bcryptjs from "bcryptjs"
 

@@ -1,8 +1,7 @@
-// models/ParkingArea.js
 import mongoose from 'mongoose';
 
 const ParkingAreaSchema = new mongoose.Schema({
-    name: { type: String, required: true },
+    name: {type: String, required: true, unique:true },
     location: { type: String, required: true },
     capacity: { type: Number, required: true }
 });

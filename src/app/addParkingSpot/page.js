@@ -2,10 +2,12 @@
 import React from 'react'
 import Layout from '@/app/components/layout/Layout'
 import Button from "@/app/components/button/Button"
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import axios from "axios";
 
 export default function AddParkingSpot() {
+    const router= useRouter()
 
     const [parkingArea, setArea] = useState({
         areaName: "",
@@ -15,8 +17,8 @@ export default function AddParkingSpot() {
 
     const addSpot = async () => {
         try {
-            await axios.post("./api/addArea", parkingArea);
-            router.push("/addParkingSpot");
+            const response =await axios.post("/api/addParkingArea", parkingArea);
+            router.push("/admin");
         } catch (error) {
             console.log(error.message);
         }

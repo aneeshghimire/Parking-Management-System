@@ -1,13 +1,28 @@
 "use client";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Chakra_Petch } from "next/font/google";
 import { useKeenSlider } from "keen-slider/react";
 import "keen-slider/keen-slider.min.css";
 import Button from "../button/Button";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
+import Logincontext from "@/app/context/logincontext/LoginContext";
+import AvailableParkingAreas from "@/app/availableParkingAreas/page";
 
 const chakra_petch = Chakra_Petch({ subsets: ["latin"], weight: ["600"] });
 
 export default function Hero({id}) {
+  const router= useRouter()
+  const {isLoggedIn}= useContext(Logincontext)
+
+  const onParkingAreaClick=()=>{
+    if(isLoggedIn){
+      router.push('/availableParkingAreas')
+    }
+    else{
+      router.push('/login')
+    }
+  }
   const [sliderRef] = useKeenSlider(
     {
       loop: true,
@@ -62,7 +77,7 @@ export default function Hero({id}) {
               enhance customer satisfaction.{" "}
             </p>
             <div className="flex gap-5">
-              <Button title={"Available Parking Slots"} bgcolor={"black"} color={"#F0FFFF"} padL={10} padT={5}/>
+              <Button title={"Available Parking Slots"} event={onParkingAreaClick} bgcolor={"black"} color={"#F0FFFF"} padL={10} padT={5}/>
               <Button title={"Learn More"} bgcolor={"black"} color={"#F0FFFF"} padL={10} padT={5}/>
             </div>
           </div>

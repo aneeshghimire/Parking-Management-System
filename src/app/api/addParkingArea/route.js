@@ -9,7 +9,7 @@ connect()
 export async function POST(request) {
     try {
         const reqBody = await request.json()
-        const { name, location, capacity} = reqBody;
+        const { name, location, capacity,imagePath,pricePerHourCar,pricePerHourBike,description} = reqBody;
         console.log(reqBody);
         // const area = await ParkingArea.findOne({ name })
 
@@ -22,9 +22,12 @@ export async function POST(request) {
         const newArea = new ParkingArea({
             name,
             location,
-            capacity
+            capacity,
+            imagePath,
+            pricePerHourCar,
+            pricePerHourBike,
+            description
         })
-        console.log("New area is ", newArea)
 
         const savedArea = await newArea.save()
 

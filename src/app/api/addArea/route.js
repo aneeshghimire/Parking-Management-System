@@ -10,16 +10,15 @@ export async function POST(request) {
         const reqBody = await request.json();
         const { name, location, capacity } = reqBody;
         console.log(reqBody);
-
-        // const area = await ParkingArea.findOne({ areaName });
-        // if (area) {
-        //     return NextResponse.json({ error: "Area already exists", status: 400 })
-        // }
-
+        const parkname = await User.findOne({ email })
+        if (parkname) {
+            return NextResponse.json({ error: "User already exists", status: 400 }
+            )
+        }
         const newParkingArea = new ParkingArea({
-            name: parkingArea.areaName,
-            location: parkingArea.location,
-            capacity: parkingArea.capacity
+            name,
+            location,
+            capacity,
         });
 
         console.log("K xa tani");

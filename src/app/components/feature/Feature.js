@@ -7,7 +7,7 @@ import { Chakra_Petch } from "next/font/google";
 
 const chakra_petch = Chakra_Petch({ subsets: ["latin"], weight: ["600"] });
 
-export default function Feature({id}) {
+export default function Feature({ id }) {
   return (
     <div id={id}>
       <div className="container w-5/6 mx-auto flex flex-col gap-y-10 py-10">

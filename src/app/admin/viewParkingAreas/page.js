@@ -1,9 +1,10 @@
 "use client"
 import React, { useEffect,useState } from 'react'
 // import availableParkingSlots from '../../../parkingSlotsData'
-import Card from '../components/card/Card'
-import Layout from '../components/layout/Layout'
+import Card from '../../components/card/Card'
+import Layout from '../../components/layout/Layout'
 import axios from "axios"
+import AdminCard from '@/app/components/admincard/AdminCard'
 
 function ParkingArea() {
 
@@ -23,6 +24,9 @@ function ParkingArea() {
             console.log(err.message)
         }
     }
+    const handleDelete = (id) => {
+        setAvailableParkingSlots(availableParkingSlots.filter((area) => area._id !== id));
+      };
 
   return (
     <Layout>
@@ -31,7 +35,7 @@ function ParkingArea() {
                 <div className='flex'>
                     {
                         availableParkingSlots.map((item,index)=>(
-                            <Card key={item._id} data={item} />
+                            <AdminCard key={item._id} data={item} onDelete={handleDelete}/>
                         ))   
                     }
                 </div>

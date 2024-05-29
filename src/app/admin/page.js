@@ -25,14 +25,14 @@ export default function Admin() {
                     <h2 className={`text-blue-500 text-4xl font-semibold text-center leading-snug ${chakra_petch.className}`}> Features</h2>
                 </div>
                 <div className="flex flex-row justify-between gap-10 p-10 pr-24 pl-24 ">
-                    <Link href="/addParkingSpot" className="hover:scale-115 w-1/3 text-center">
+                    <Link href="/admin/addParkingSpot" className="hover:scale-115 w-1/3 text-center">
                         <Feature text={"Add Parking Area"} />
                     </Link>
-                    <Link href="/addParkingSpot" className="hover:scale-115 w-1/3 text-center">
+                    <Link href="/admin/addParkingSpot" className="hover:scale-115 w-1/3 text-center">
                         <Feature text={"View Total Users"} />
                     </Link>
-                    <Link href="/addParkingSpot" className="hover:scale-115 w-1/3 text-center">
-                        <Feature text={"View Parking Spots"} />
+                    <Link href="/admin/viewParkingAreas" className="hover:scale-115 w-1/3 text-center">
+                        <Feature text={"View Parking Areas"} />
                     </Link>
 
 

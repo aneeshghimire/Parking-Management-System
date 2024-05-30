@@ -51,11 +51,10 @@ export default function Login() {
     email: "",
     password: "",
   });
-  const {isLoggedIn,setIsLoggedIn}= useContext(Logincontext)
   const onLogin = async () => { 
     try{
       const response= await axios.post("/api/login",user)
-      setIsLoggedIn(true)
+      localStorage.setItem("isLoggedIn","true")
       router.push("/")
 
     }

@@ -28,7 +28,7 @@ function ParkingArea() {
     <Layout>
             <div className='container mx-auto w-5/6 flex gap-y-10 flex-col'>
                 <span className='text-2xl uppercase text-center font-bold my-4'>Available Parking Slots</span>
-                <div className='flex'>
+                <div className='flex w-6/7 justify-around flex-wrap mx-auto'>
                     {
                         availableParkingSlots.map((item,index)=>(
                             <Card key={item._id} data={item} />

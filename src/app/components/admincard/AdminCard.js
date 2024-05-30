@@ -1,6 +1,7 @@
 import React from 'react'
 import { MdDelete } from "react-icons/md";
 import axios from "axios"
+import Link from 'next/link';
 
 export default function AdminCard({data,onDelete}) {
     const sliceDescription=(description)=>{
@@ -18,6 +19,7 @@ export default function AdminCard({data,onDelete}) {
       }
 
   return (
+    <Link href={""}>
     <div className="flex flex-wrap justify-center w-full p-4">
     <div className="container max-w-sm border-2 rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-105 hover:shadow-2xl">
       <img src={data.imagePath} alt={data.name} className="w-full h-48 object-cover rounded-t-lg"/>
@@ -37,5 +39,6 @@ export default function AdminCard({data,onDelete}) {
       </div>
     </div>
   </div>
+    </Link>
   )
 }

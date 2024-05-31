@@ -9,9 +9,11 @@ import axios from "axios";
 import "keen-slider/keen-slider.min.css";
 import Link from "next/link";
 import Logincontext from "../context/logincontext/LoginContext";
+import { DNA } from "react-loader-spinner";
 
 export default function Login() {
-  const router= useRouter();
+  const router = useRouter();
+  const [isLoading, setIsLoading] = useState(false);
   const [sliderRef] = useKeenSlider(
     {
       loop: true,
@@ -51,28 +53,39 @@ export default function Login() {
     email: "",
     password: "",
   });
-  const onLogin = async () => { 
-    try{
-      const response= await axios.post("/api/login",user)
-      localStorage.setItem("isLoggedIn","true")
-      router.push("/")
-
-    }
-    catch(error){
-        console.log(error.message)
+  const onLogin = async () => {
+    try {
+      setIsLoading(true);
+      const response = await axios.post("/api/login", user);
+      localStorage.setItem("isLoggedIn", "true");
+      router.push("/");
+    } catch (error) {
+      console.log(error.message);
+    } finally {
+      setIsLoading(false);
     }
   };
   return (
     <Layout>
       <div className="container mx-auto p-10 flex justify-between items-center">
+        
         <div ref={sliderRef} className="keen-slider">
           <div className="keen-slider__slide number-slide1">
             <img src="./images/login-images/login-img-1.png" alt="" />
           </div>
-
         </div>
 
         <div className="login-inputs flex flex-col items-center gap-y-8 bg-gray-50 w-2/3 px-2 py-5">
+        {isLoading && (
+          <DNA
+            visible={true}
+            height="80"
+            width="80"
+            ariaLabel="dna-loading"
+            wrapperStyle={{}}
+            wrapperClass="dna-wrapper"
+          />
+        )}
           <img src="./images/login-images/login-logo.png" width={100} alt="" />
           <h2 className=" text-xl uppercase font-semibold text-blue-600">
             Login to your account
@@ -113,14 +126,16 @@ export default function Login() {
                 color={"white"}
                 event={onLogin}
               />
-              <Link href={"/register"}> <Button
-                title={"Register"}
-                bgcolor={"#1F51FF"}
-                padL={10}
-                padT={3}
-                color={"white"}
-              /></Link>
-             
+              <Link href={"/register"}>
+                {" "}
+                <Button
+                  title={"Register"}
+                  bgcolor={"#1F51FF"}
+                  padL={10}
+                  padT={3}
+                  color={"white"}
+                />
+              </Link>
             </div>
           </div>
         </div>

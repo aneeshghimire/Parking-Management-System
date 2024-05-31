@@ -11,7 +11,7 @@ function ParkingAreaDetail({ searchParams }) {
     });
     useEffect(()=>{
         priceCalculation();
-    },[formData.hours])
+    },[formData.hours,formData.parkingType])
 
     const priceCalculation=()=>{
         let totalPrice=0

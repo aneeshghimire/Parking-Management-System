@@ -87,9 +87,11 @@ const ParkingAreaForm = ({ data, price, formData, onInputChange }) => {
   const elements = useElements();
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(false);
+  const router= useRouter()
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    console.log("hjadsjklas")
 
     if (!stripe || !elements) {
       return;
@@ -105,22 +107,20 @@ const ParkingAreaForm = ({ data, price, formData, onInputChange }) => {
 
       if (error) {
         setError(error.message);
+        console.log(error)
       } else {
         const { id } = paymentMethod;
         const response = await axios.post("/api/charge", {
           amount: price, // Convert price to cents
           id,
         });
-        if (response.data.success) {
-          setSuccess(true);
-        }
-        if(success){
-          router.push("/success")
-        }
+        router.push('/success')
       }
     } catch (error) {
       setError(error.message);
+      console.log(error)
     }
+    console.log(success)
   };
 
   return (

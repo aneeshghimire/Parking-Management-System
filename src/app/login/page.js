@@ -58,7 +58,13 @@ export default function Login() {
       setIsLoading(true);
       const response = await axios.post("/api/login", user);
       localStorage.setItem("isLoggedIn", "true");
-      router.push("/");
+      
+      if(response.data.message=="isAdmin"){
+        router.push("/admin")
+      }
+      else{
+        router.push("/")
+      }
     } catch (error) {
       console.log(error.message);
     } finally {
@@ -71,7 +77,7 @@ export default function Login() {
         
         <div ref={sliderRef} className="keen-slider">
           <div className="keen-slider__slide number-slide1">
-            <img src="./images/login-images/login-img-1.png" alt="" />
+            <img src="/images/login-images/login-img-1.png" alt="" />
           </div>
         </div>
 
@@ -86,7 +92,7 @@ export default function Login() {
             wrapperClass="dna-wrapper"
           />
         )}
-          <img src="./images/login-images/login-logo.png" width={100} alt="" />
+          <img src="/images/login-images/login-logo.png" width={100} alt="" />
           <h2 className=" text-xl uppercase font-semibold text-blue-600">
             Login to your account
           </h2>
@@ -117,6 +123,9 @@ export default function Login() {
                 className=" outline-none border border-gray-400 border-opacity-30 px-5 py-2  placeholder:text-gray-500"
               />
             </div>
+            <div>
+                <Link href={"/admin/adminlogin"} className=" text-blue-700">Login as admin?</Link>
+              </div>
             <div className="btn flex gap-x-3">
               <Button
                 title={"Login"}
@@ -136,6 +145,7 @@ export default function Login() {
                   color={"white"}
                 />
               </Link>
+             
             </div>
           </div>
         </div>

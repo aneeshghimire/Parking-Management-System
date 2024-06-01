@@ -5,10 +5,11 @@ import Button from "@/app/components/button/Button"
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import axios from "axios";
+import { DNA } from "react-loader-spinner";
 
 export default function AddParkingSpot() {
     const router= useRouter()
-
+    const [isLoading, setIsLoading] = useState(false);
     const [parkingArea, setArea] = useState({
         name: "",
         location: "",
@@ -21,16 +22,31 @@ export default function AddParkingSpot() {
 
     const addSpot = async () => {
         try {
+          setIsLoading(true);
             const response =await axios.post("/api/addParkingArea", parkingArea);
             router.push("/admin");
         } catch (error) {
             console.log(error.message);
         }
+        finally{
+          setIsLoading(false);
+        }
     }
     return (
         <Layout>
+          
           <div className="flex justify-center items-center min-h-screen bg-gray-50">
       <div className="login-inputs flex flex-col items-center gap-y-8 bg-white shadow-lg rounded-lg p-8 w-2/3">
+      {isLoading && (
+          <DNA
+            visible={true}
+            height="80"
+            width="80"
+            ariaLabel="dna-loading"
+            wrapperStyle={{}}
+            wrapperClass="dna-wrapper"
+          />
+        )}
         <img src="/images/login-images/login-logo.png" width={100} alt="" />
         <div className="add-area flex flex-col gap-y-6 w-full">
           <div className="flex flex-col gap-y-3">

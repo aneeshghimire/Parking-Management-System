@@ -7,9 +7,11 @@ import { useState } from "react";
 import axios from "axios";
 import { DNA } from "react-loader-spinner";
 
+
 export default function AddParkingSpot() {
     const router= useRouter()
     const [isLoading, setIsLoading] = useState(false);
+
     const [parkingArea, setArea] = useState({
         name: "",
         location: "",
@@ -22,14 +24,14 @@ export default function AddParkingSpot() {
 
     const addSpot = async () => {
         try {
-          setIsLoading(true);
-            const response =await axios.post("/api/addParkingArea", parkingArea);
-            router.push("/admin");
+          setIsLoading(true)
+          const response =await axios.post("/api/addParkingArea", parkingArea);
+          router.push("/admin");
         } catch (error) {
             console.log(error.message);
         }
         finally{
-          setIsLoading(false);
+          setIsLoading(false)
         }
     }
     return (

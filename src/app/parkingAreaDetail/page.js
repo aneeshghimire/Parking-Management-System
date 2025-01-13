@@ -9,7 +9,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 function ParkingAreaDetail({ searchParams }) {
-  
+
   const data = JSON.parse(searchParams.data);
   const [price, setPrice] = useState(0);
   const [formData, setFormData] = useState({
@@ -87,11 +87,11 @@ const ParkingAreaForm = ({ data, price, formData, onInputChange }) => {
   const elements = useElements();
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(false);
-  const router= useRouter()
+  const router = useRouter()
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log("hjadsjklas")
+
 
     if (!stripe || !elements) {
       return;
@@ -169,12 +169,12 @@ const ParkingAreaForm = ({ data, price, formData, onInputChange }) => {
       <div className="price text-blue-600 font-bold text-xl">
         <span className=" text-gray-950 ">Total Price</span>: ${price}
       </div>
-        <button
-          type="submit"
-          className="bg-blue-600 text-white px-5 py-2 rounded-md hover:bg-blue-700 transition duration-300 w-full"
-        >
-          Proceed to Checkout
-        </button>
+      <button
+        type="submit"
+        className="bg-blue-600 text-white px-5 py-2 rounded-md hover:bg-blue-700 transition duration-300 w-full"
+      >
+        Proceed to Checkout
+      </button>
       {error && <div className="text-red-500 mt-4">{error}</div>}
       {success && (
         <div className="text-green-500 mt-4">Payment Successful!</div>
